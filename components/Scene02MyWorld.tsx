@@ -105,18 +105,18 @@ export default function Scene02MyWorld() {
         {/* Asymmetric Split Composition */}
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
           {/* Left Column: Masked Editorial Portrait with Subtle 3D Tilt */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
+          <div className="lg:col-span-5 flex flex-col justify-between items-center lg:items-start">
             <div
               ref={portraitWrapRef}
               onMouseMove={handleCardTilt}
               onMouseLeave={handleCardReset}
-              className="relative w-full aspect-[3/4] overflow-hidden bg-[#DED7CA] will-change-transform"
+              className="relative w-full max-w-[260px] md:max-w-[440px] aspect-[3/4] overflow-hidden bg-[#DED7CA] will-change-transform"
             >
               <EditorialImage
                 src={HERO_MEDIA.portrait}
                 alt={HERO_MEDIA.portraitAlt}
                 fill
-                sizes="(max-width: 1024px) 100vw, 42vw"
+                sizes="(max-width: 768px) 260px, 440px"
                 className="object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#141416]/60 via-transparent to-transparent" />
@@ -128,7 +128,7 @@ export default function Scene02MyWorld() {
               </div>
             </div>
 
-            <p className="mt-6 text-xs leading-relaxed text-[#141416]/68 max-w-sm">
+            <p className="mt-6 text-xs leading-relaxed text-[#141416]/68 max-w-sm text-center lg:text-left">
               Entre cobogós banhados por sol da tarde, viagens pela Costa Verde e arquitetura modernista brasileira, cada frame nasce de uma observação genuína de tempo e lugar.
             </p>
           </div>
@@ -185,14 +185,16 @@ export default function Scene02MyWorld() {
                 transition={{duration: 0.35, ease: [0.16, 1, 0.3, 1]}}
                 className="mt-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-center"
               >
-                <div className="md:col-span-7 relative aspect-[4/3] overflow-hidden bg-[#DED7CA]">
-                  <EditorialImage
-                    src={activeChapter.image}
-                    alt={activeChapter.imageAlt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-cover transition-transform duration-700 hover:scale-105"
-                  />
+                <div className="md:col-span-7 flex justify-center md:justify-start">
+                  <div className="relative w-full max-w-[270px] md:max-w-[420px] aspect-[4/5] overflow-hidden bg-[#DED7CA]">
+                    <EditorialImage
+                      src={activeChapter.image}
+                      alt={activeChapter.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 270px, 420px"
+                      className="object-cover object-top transition-transform duration-700 hover:scale-105"
+                    />
+                  </div>
                 </div>
 
                 <div className="md:col-span-5 flex flex-col justify-between space-y-5">

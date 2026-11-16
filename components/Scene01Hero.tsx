@@ -105,12 +105,33 @@ export default function Scene01Hero({onNavigate}: Scene01HeroProps) {
     <section
       id="cena-01"
       ref={sectionRef}
-      className="relative min-h-[100svh] w-full overflow-hidden bg-[#0A0A0B] text-[#F3EFE8] flex flex-col justify-end pt-24 pb-8 md:pb-12"
+      className="relative md:min-h-[100svh] w-full overflow-hidden bg-[#0A0A0B] text-[#F3EFE8] md:flex md:flex-col md:justify-end pt-14 md:pt-24 pb-10 md:pb-12"
     >
-      {/* Layer 0: Full-bleed Brazilian Modernist & Coastal Photography with Parallax */}
+      {/* Mobile-Only Hero Photography: Natural 16:9 above text with smooth bottom fade (no 100svh stretch/zoom) */}
+      <div className="relative block md:hidden w-full aspect-[16/9] overflow-hidden bg-[#0A0A0B]">
+        <EditorialImage
+          src={HERO_MEDIA.backdrop}
+          alt={HERO_MEDIA.backdropAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+          fallbackTitle="Lívia Martins — Reality Flow"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B] via-[#0A0A0B]/30 to-transparent"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#0A0A0B]/55 to-transparent"
+        />
+      </div>
+
+      {/* Desktop Layer 0: Full-bleed Brazilian Modernist & Coastal Photography with Parallax */}
       <div
         ref={backdropRef}
-        className="absolute -inset-x-4 inset-y-0 z-0 will-change-transform"
+        className="hidden md:block absolute -inset-x-4 inset-y-0 z-0 will-change-transform"
         aria-hidden="true"
       >
         <EditorialImage
@@ -119,7 +140,7 @@ export default function Scene01Hero({onNavigate}: Scene01HeroProps) {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[58%_center] md:object-center opacity-90"
+          className="object-cover object-center opacity-90"
           fallbackTitle="Lívia Martins — Reality Flow"
         />
         {/* Measured contrast scrim concentrated on the left & bottom editorial zones */}
@@ -127,14 +148,14 @@ export default function Scene01Hero({onNavigate}: Scene01HeroProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B] via-[#0A0A0B]/28 to-[#0A0A0B]/35" />
       </div>
 
-      {/* Layer 1: Subtle Sun-Dappled Cursor Atmosphere (No artificial 3D objects) */}
+      {/* Desktop Layer 1: Subtle Sun-Dappled Cursor Atmosphere */}
       <div
         ref={lightWashRef}
         aria-hidden="true"
-        className="pointer-events-none absolute right-[12%] top-[18%] z-10 h-[360px] w-[360px] rounded-full opacity-25 blur-3xl bg-[#D4A359]/30 will-change-transform"
+        className="hidden md:block pointer-events-none absolute right-[12%] top-[18%] z-10 h-[360px] w-[360px] rounded-full opacity-25 blur-3xl bg-[#D4A359]/30 will-change-transform"
       />
 
-      {/* Layer 2: Right-Top Subtle Location Anchor */}
+      {/* Desktop Layer 2: Right-Top Subtle Location Anchor */}
       <div className="hidden md:flex absolute right-10 top-24 z-20 items-center gap-2 text-[11px] font-mono tabular-nums tracking-[0.14em] uppercase text-[#F3EFE8]/80 bg-[#0A0A0B]/55 px-3.5 py-2 border border-[#F3EFE8]/15">
         <MapPin className="w-3.5 h-3.5 text-[#D4A359]" strokeWidth={1.6} />
         <span>Rio de Janeiro · 22°57′S 43°12′W</span>
@@ -143,7 +164,7 @@ export default function Scene01Hero({onNavigate}: Scene01HeroProps) {
       {/* Layer 3: Foreground Kinetic Editorial Composition */}
       <div
         ref={headlineRef}
-        className="relative z-20 max-w-[1440px] w-full mx-auto px-5 md:px-10 will-change-transform"
+        className="relative z-20 -mt-5 md:mt-0 max-w-[1440px] w-full mx-auto px-5 md:px-10 will-change-transform"
       >
         <div className="max-w-2xl lg:max-w-3xl">
           {/* Unboxed Editorial Kicker (Zero-Pill Rule) */}

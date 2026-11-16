@@ -169,7 +169,7 @@ export default function Scene06Connect({
                     Simulador demonstrativo de briefing · Sem envio externo real
                   </p>
                 </div>
-                <div className="hidden sm:block relative w-14 h-14 overflow-hidden border border-[#F3EFE8]/15 shrink-0">
+                <div className="hidden sm:block relative w-14 aspect-[3/4] overflow-hidden border border-[#F3EFE8]/15 shrink-0">
                   <EditorialImage
                     src={HERO_MEDIA.portrait}
                     alt={HERO_MEDIA.portraitAlt}
